@@ -6,6 +6,7 @@ import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
 import optuna
+from optuna.visualization import plot_optimization_history, plot_parallel_coordinate, plot_slice, plot_contour, plot_param_importances
 
 print("ANN")
 
@@ -170,3 +171,18 @@ study = optuna.create_study(direction='maximize')
 study.optimize(objective, n_trials=10)
 
 print(study.best_params)
+
+# 1. Optimization History
+plot_optimization_history(study).show()
+
+# 2. Parallel Coordinates Plot
+plot_parallel_coordinate(study).show()
+
+# 3. Slice Plot
+plot_slice(study).show()
+
+# 4. Contour Plot
+plot_contour(study).show()
+
+# 5. Hyperparameter Importance
+plot_param_importances(study).show()
